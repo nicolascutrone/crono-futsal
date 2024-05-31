@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.scoreboard {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.time-controls {
+    margin-bottom: 20px;
+}
+
+.team-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.team {
+    width: 45%;
+  
+}
+
+button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+buttonFaul {
+    display: block;
+    
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  
+}
+buttonGolplus {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    background-color: #2CCD16;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+buttonGolMenos {
+    display: block;
+    margin: 10x 0;
+    padding: 10px;
+    width: 80%;
+    background-color: #CD1616;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+buttonBocina {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#Display {
+    margin-top: 10px;
+    font-size: 30px;
+    font-family:serif;
+    font-variant-numeric:darken;
+    font-style:bold;
+    
+}
+#timeDisplay {
+    margin-top: 10px;
+    font-size: 2.2em;
+    font-family:sans-serif;
+    font-variant-numeric:darken;#timeDisplay {
+    margin-top: 10px;
+    font-size: 2.2em;
+    font-family:sans-serif;
+    font-variant-numeric:darken;
+    
+}
+    
+}
+
+#goals {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-family:sans-serif;
+    font-variant-numeric:darken;
+  font-color:greenyellow;
+    
+}
+
+.goals {
+    font-size: 18px; /* Change font size */
+    color: green; /* Change text color */
+}
+
+.fouls {
+    font-size: 18px; /* Change font size */
+    color: blue; /* Change text color */
+}

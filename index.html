@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - N-Cron</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futsal Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="time-controls">
+          <div id="Display">CRONO-CONSOLA</div>
+            <label for="timeInput">Tiempo (minutos):</label>
+            <input type="number" id="timeInput" min="1">
+            <button id="setTimeButton">Establecer  Tiempo</button>
+            <button id="startPauseButton">Iniciar/Pausar</button>
+          <buttonBocina id="Bocina">Bocina</buttonBocina>
+            <div id="timeDisplay">Tiempo: 0:00:00</div>
+        </div>
+        <div class="team-controls">
+            <div class="team" id="team1">
+                <h2>LOCAL</h2>
+                <buttonGolplus class="goalButtonAdd">+ GOL</buttonGolplus>
+              <buttonGolMenos class="goalButtonRest">- GOL</buttonGolMenos>
+                <buttonfaul class="foulButton">+ Falta</buttonfaul>
+                <buttonfaul class="foulButtonMinos">- Falta</buttonfaul>
+                <div class="goals">GOLES: 0</div>
+                <div class="fouls">Faltas: 0</div>
+            </div>
+            <div class="team" id="team2">
+                <h2>VISITANTES</h2>
+                <buttonGolplus class="goalButton">+ GOL</buttonGolplus>
+              <buttonGolMenos class="goalButtonRest2">- GOL</buttonGolMenos>
+                <buttonfaul class="foulButton">+ Falta</buttonfaul>
+                <buttonFaul class="foulButtonMenos">- Falta</buttonFaul>
+                <div class="goals">GOLES: 0</div>
+                <div class="fouls">Faltas: 0</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
