@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -42,6 +43,19 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+buttonPer {
+    display: block;
+    margin: 5px 10;
+    margin-right:10px;
+    margin-left:10px;
+    padding: 5px;
+    width: 10%;
+    background-color:  #0400b3;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
 buttonFaul {
     display: block;
     
@@ -77,6 +91,20 @@ buttonGolMenos {
     border-radius: 5px;
     cursor: pointer;
 }
+buttonStarStop {
+  display: block;
+  background-color: #B52121; /* Red */
+  border: none;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 40%;
+}
 buttonBocina {
   background-color: #04AA6D; /* Green */
   border: none;
@@ -97,7 +125,7 @@ button:hover {
 
 #Display {
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 20px;
     font-family:serif;
     font-variant-numeric:darken;
     font-style:bold;
@@ -135,3 +163,17 @@ button:hover {
     font-size: 18px; /* Change font size */
     color: blue; /* Change text color */
 }
+.periodo {
+  font-family:system-ui;
+  font-size: 20px;
+  font-style:bold;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contador {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }

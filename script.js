@@ -1,5 +1,6 @@
 // Nicolas Cutrone
 
+let periodo = 0;
 let team1Goalsadd = 0;
 let team1GoalsRest =0;
 let team2GoalsRest =0;
@@ -16,6 +17,7 @@ const timeInput = document.getElementById('timeInput');
 const setTimeButton = document.getElementById('setTimeButton');
 const startPauseButton = document.getElementById('startPauseButton');
 const timeDisplay = document.getElementById('timeDisplay');
+
 
 const team1GoalsLabel = document.querySelector('#team1 .goals');
 const team2GoalsLabel = document.querySelector('#team2 .goals');
@@ -46,6 +48,23 @@ startPauseButton.addEventListener('click', () => {
 Bocina.addEventListener('click', () => {
     beep();
 });
+
+//**
+  
+function cambiarPeriodo(cambio) {
+            periodo += cambio;
+            if (periodo<0)  periodo = 0;
+           document.getElementById("periodo").innerText = periodo;
+           
+  // actualizarBotones();
+ }
+function actualizarBotones() {
+           document.getElementById("decrementar").disabled = periodo <= 0;
+        }
+
+        actualizarBotones();
+//**
+
 document.querySelector('#team1 .goalButtonAdd').addEventListener('click', () => {
     team1Goalsadd++;
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;

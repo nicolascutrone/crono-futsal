@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - N-Cron</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futsal Scoreboard</title>
+  <title>Futsal Scoreboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="scoreboard">
         <div class="time-controls">
-          <div id="Display">CRONO-CONSOLA</div>
+          <div id="Display"><h3>CRONO-CONSOLA</h3></div>
             <label for="timeInput">Tiempo (minutos):</label>
             <input type="number" id="timeInput" min="1">
             <button id="setTimeButton">Establecer  Tiempo</button>
-            <button id="startPauseButton">Iniciar/Pausar</button>
+          <div>Periodo</div>
+         <div class="contador">
+           
+            <buttonPer id="decrementar" onclick="cambiarPeriodo(-1)">-</buttonPer>
+           
+             <span id="periodo">0</span>
+            <buttonPer id="incrementar" onclick="cambiarPeriodo(1)">+</buttonPer>
+        </div>
+        
+          
+          
+            <buttonStarStop id="startPauseButton">Iniciar/Pausar</buttonStarStop>
           <buttonBocina id="Bocina">Bocina</buttonBocina>
             <div id="timeDisplay">Tiempo: 0:00:00</div>
         </div>
@@ -49,10 +50,5 @@
         </div>
     </div>
     <script src="script.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>
