@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  
     <div class="scoreboard">
         <div class="time-controls">
-          <div id="Display"><h3>CRONO-CONSOLA</h3></div>
+          <div id="Display">CRONO-CONSOLA</div>
             <label for="timeInput">Tiempo (minutos):</label>
             <input type="number" id="timeInput" min="1">
             <button id="setTimeButton">Establecer  Tiempo</button>
@@ -35,7 +36,9 @@
           
           
             <buttonStarStop id="startPauseButton">Iniciar/Pausar</buttonStarStop>
+          <audio id="audioPlayer" src="https://scpaginas.github.io/crono-futsal/stop-13692.mp3"></audio>
           <buttonBocina id="Bocina">Bocina</buttonBocina>
+           <audio id="HornBasket" src="https://scpaginas.github.io/crono-futsal/basket-horn.mp3"></audio>
             <div id="timeDisplay">Tiempo: 0:00:00</div>
         </div>
         <div class="team-controls">
@@ -56,10 +59,16 @@
                 <buttonFaul class="foulButtonMenos">- Falta</buttonFaul>
                 <div class="goals">GOLES: 0</div>
                 <div class="fouls">Faltas: 0</div>
+               
             </div>
+             
+           
+           
         </div>
+            <button id="reset">Reiniciar Consola</button>
     </div>
     <script src="script.js"></script>
+    
 </body>
 </html>
 <!-- partial -->

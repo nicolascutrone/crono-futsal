@@ -17,7 +17,7 @@ const timeInput = document.getElementById('timeInput');
 const setTimeButton = document.getElementById('setTimeButton');
 const startPauseButton = document.getElementById('startPauseButton');
 const timeDisplay = document.getElementById('timeDisplay');
-
+const resetButton = document.getElementById('reset');
 
 const team1GoalsLabel = document.querySelector('#team1 .goals');
 const team2GoalsLabel = document.querySelector('#team2 .goals');
@@ -36,6 +36,17 @@ setTimeButton.addEventListener('click', () => {
     updateTimeDisplay();
   
 });
+// ////  Reset valores
+resetButton.addEventListener('click', () => {
+    periodo=0;
+    team1Goalsadd=0;
+    team2Goals=0;
+    team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
+    document.getElementById("periodo").innerText = periodo;
+    team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
+    timeRemaining=0;
+    updateTimeDisplay();
+});
 
 startPauseButton.addEventListener('click', () => {
     if (!timer) {
@@ -46,7 +57,8 @@ startPauseButton.addEventListener('click', () => {
 });
 
 Bocina.addEventListener('click', () => {
-    beep();
+   // beep();
+  reproducirAudio("HornBasket");
 });
 
 //**
@@ -60,7 +72,7 @@ function cambiarPeriodo(cambio) {
  }
 function actualizarBotones() {
            document.getElementById("decrementar").disabled = periodo <= 0;
-        }
+}
 
         actualizarBotones();
 //**
@@ -108,6 +120,7 @@ document.querySelector('#team2 .foulButtonMenos').addEventListener('click', () =
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
 });
 function startTimer() {
+   reproducirAudio("audioPlayer");
     timer = setInterval(() => {
         if (timeRemaining > 0) {
             timeRemaining -= 10;
@@ -123,8 +136,20 @@ function startTimer() {
 }
 
 function pauseTimer() {
+    reproducirAudio("audioPlayer");
     clearInterval(timer);
     timer = null;
+}
+
+// Sonidos
+
+function reproducirAudio(audioId) {
+    var audioPlayer = document.getElementById(audioId);
+    if (audioPlayer) {
+        audioPlayer.play();
+    } else {
+        console.error('No se encontró el elemento de audio con ID:', audioId);
+    }
 }
 
 function beep() {
@@ -139,6 +164,10 @@ oscillator.start();
 setTimeout(function () {
     oscillator.stop();
 }, 3000);
+}
+
+function beepButton() {
+
 }
 
 function updateTimeDisplay() {
