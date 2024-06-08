@@ -41,6 +41,10 @@ resetButton.addEventListener('click', () => {
     periodo=0;
     team1Goalsadd=0;
     team2Goals=0;
+   team1Fouls=0;
+  team2Fouls=0;
+    team1FoulsLabel.textContent = `Faltas: ${team1Fouls}`;
+  team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
     team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
     document.getElementById("periodo").innerText = periodo;
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
@@ -129,7 +133,8 @@ function startTimer() {
             clearInterval(timer);
             timer = null;
             //alert("Time's up!");
-            beep();
+          reproducirAudio("HornBasket");  
+           //console.error("Tiempo Finalizado");
           alert("Tiempo finalizado!");
         }
     }, 10);
