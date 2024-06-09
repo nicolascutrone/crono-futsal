@@ -132,10 +132,15 @@ function startTimer() {
         } else {
             clearInterval(timer);
             timer = null;
-            //alert("Time's up!");
+           
           reproducirAudio("HornBasket");  
-           //console.error("Tiempo Finalizado");
+          console.log('Esperando 3 segundos...');
+          setTimeout(() => {
+            console.log('¡3 segundos han pasado!');
+          }, 3000);
+           
           alert("Tiempo finalizado!");
+          reproducirAudio("HornBasket");  
         }
     }, 10);
 }

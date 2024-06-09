@@ -16,7 +16,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 320px;
     text-align: center;
   
 }
@@ -182,3 +182,20 @@ button:hover {
             align-items: center;
             justify-content: center;
         }
+
+
+.button-image {
+    display: flexbox; /* Usa flexbox para alinear contenido */
+    align-items:center; /* Alinea el contenido verticalmente al centro */
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 0px 1px;
+    font-size: 5px;
+    cursor: pointer;
+    
+    text-align: left;
+    transform: scale(0.6);
+    
+   
+}
