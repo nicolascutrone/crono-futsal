@@ -103,7 +103,7 @@ document.querySelector('#team1 .foulButton').addEventListener('click', () => {
 });
 
 document.querySelector('#team1 .foulButtonMinos').addEventListener('click', () => {
-    team1Fouls--;
+    if (team1Fouls>0) team1Fouls--;
     team1FoulsLabel.textContent = `Faltas: ${team1Fouls}`;
 });
 
@@ -115,7 +115,7 @@ document.querySelector('#team2 .goalButton').addEventListener('click', () => {
 
 
 document.querySelector('#team2 .foulButton').addEventListener('click', () => {
-    team2Fouls++;
+    if (team2Fouls>0) team2Fouls++;
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
 });
 
