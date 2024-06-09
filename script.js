@@ -115,12 +115,12 @@ document.querySelector('#team2 .goalButton').addEventListener('click', () => {
 
 
 document.querySelector('#team2 .foulButton').addEventListener('click', () => {
-    if (team2Fouls>0) team2Fouls++;
+    team2Fouls++;
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
 });
 
 document.querySelector('#team2 .foulButtonMenos').addEventListener('click', () => {
-    team2Fouls--;
+    if (team2Fouls>0) team2Fouls--;
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
 });
 function startTimer() {
