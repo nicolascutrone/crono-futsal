@@ -195,7 +195,25 @@ button:hover {
     cursor: pointer;
     
     text-align: left;
-    transform: scale(0.7);
+    transform: scale(0.6);
     
    
 }
+
+#timeInput {
+            width: 100px; /* Ancho del input */
+            padding: 10px; /* Espaciado interno */
+            font-size: 12px; /* Tamaño del texto */
+            color: #333; /* Color del texto */
+            background-color: #f0f0f0; /* Color de fondo */
+            border: 2px solid #ccc; /* Borde */
+            border-radius: 5px; /* Bordes redondeados */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+            transition: border-color 0.3s, box-shadow 0.3s; /* Transición para efectos suaves */
+        }
+
+        #timeInput:focus {
+            border-color: #66afe9; /* Color del borde al enfocar */
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Sombra al enfocar */
+            outline: none; /* Elimina el borde por defecto del navegador */
+        }
