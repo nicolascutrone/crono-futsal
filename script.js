@@ -53,11 +53,14 @@ resetButton.addEventListener('click', () => {
 });
 
 startPauseButton.addEventListener('click', () => {
+     document.getElementById('setTimeButton').disable=true;
     if (!timer) {
+         
         startTimer();
     } else {
         pauseTimer();
     }
+ 
 });
 
 Bocina.addEventListener('click', () => {
@@ -76,6 +79,7 @@ function cambiarPeriodo(cambio) {
  }
 function actualizarBotones() {
            document.getElementById("decrementar").disabled = periodo <= 0;
+ 
 }
 
         actualizarBotones();
@@ -187,3 +191,56 @@ function updateTimeDisplay() {
     timeDisplay.textContent = `Tiempo: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
   
 }
+
+//   Reloj Tiempo Muerto
+
+ let tiempoRestante = 60; // 1 minuto en segundos
+        let intervalo;
+
+ function mostrarPopup() {
+            document.getElementById('popup').style.display = 'block';
+            tiempoRestante = 60; // Reiniciar tiempo
+            document.getElementById('time').innerText = '01:00'; // Reiniciar display
+            document.getElementById('circle').style.background = 'conic-gradient(#FFA500 0% 0%, #fff 0% 100%)'; // Reiniciar relleno
+            clearInterval(intervalo);
+            intervalo = setInterval(actualizarReloj, 1000);
+            document.getElementById('mostrarPopupBtn').disabled = true; // Deshabilitar botón
+        }
+
+        function cerrarPopup() {
+            document.getElementById('popup').style.display = 'none';
+            clearInterval(intervalo);
+            document.getElementById('mostrarPopupBtn').disabled = false; // Habilitar botón
+        }
+
+        function actualizarReloj() {
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                reproducirAudio("CarDoorChime");
+                return;
+            }
+
+            tiempoRestante--;
+            const minutos = Math.floor(tiempoRestante / 60);
+            const segundos = tiempoRestante % 60;
+            document.getElementById('time').innerText = 
+                `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+
+            const porcentaje = ((60 - tiempoRestante) / 60) * 100;
+            document.getElementById('circle').style.background = 
+                `conic-gradient(#FFA500 ${porcentaje}%, #fff ${porcentaje}% 100%)`;
+        }
+
+        
+
+// Fecha y Hora
+
+ function actualizarFechaHora() {
+            const now = new Date();
+            const fecha = now.toLocaleDateString();
+            const hora = now.toLocaleTimeString();
+            document.getElementById('datetime').innerText = `${fecha} ${hora}`;
+        }
+
+        setInterval(actualizarFechaHora, 1000);
+ actualizarFechaHora(); // Actualizar inmediatamente al cargar la página

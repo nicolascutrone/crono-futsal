@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -133,12 +135,13 @@ button:hover {
     font-variant-numeric:darken;
     padding: 5px;
     border: 10px;
-    
+    margin-top:0; margin-bottom:0;
     
 }
 #timeDisplay {
+    /*font-family: 'Orbitron', sans-serif;*/
     margin-top: 10px;
-    font-size: 2.2em;
+    font-size: 2em;
     font-family:sans-serif;
     font-variant-numeric:darken;#timeDisplay {
     margin-top: 10px;
@@ -216,4 +219,93 @@ button:hover {
             border-color: #66afe9; /* Color del borde al enfocar */
             box-shadow: 0 0 8px rgba(102, 175, 233, 0.6); /* Sombra al enfocar */
             outline: none; /* Elimina el borde por defecto del navegador */
+        }
+.footer {
+    display: flex;
+    margin: 1px 0;
+    margin-right:10px;
+    margin-left:10px;
+    padding: 10px;
+    width: 90%;
+    /*background-color:  #0400b3;*/
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+buttonTM {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    background-color: #191970;
+    color:#191970
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+ #popup {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size:16px;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            padding: 20px;
+            background-color: #D3D3D3;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 8px;
+        }
+        #popup h2 {
+            margin: 0 0 10px;
+        }
+        #popup .circle {
+           position: absolute;
+	          left: 20px;
+            top:10px;
+            right:10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 10px solid #FFA500;
+            background: conic-gradient(#FFA500 0% 0%, #fff 0% 100%);
+        }
+        #popup .time {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1em;
+            font-weight: bold;
+        }
+        #popup buttonX {
+           padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: #FFA500;
+            color: white;
+            border-radius: 15px;
+            transition: background-color 0.3s;
+        }
+        #popup button:hover {
+            background-color: #FF8C00;
+        }
+        #popup button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+ #datetime {
+            font-size: 0.8em;
+            margin-bottom: 0px;
+            color:blue;
+            font-style:italic;
+            pading: 1px;
+            border:none;
+           
+            margin-top:0; margin-bottom:0;
         }
