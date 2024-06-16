@@ -48,6 +48,10 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+button:disabled {
+     background-color: #ccc;
+            cursor: not-allowed;
+}
 buttonPer {
     display: block;
     margin: 5px 10;
@@ -299,7 +303,12 @@ buttonTM {
             background-color: #ccc;
             cursor: not-allowed;
         }
- #datetime {
+        #button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #datetime {
             font-size: 0.8em;
             margin-bottom: 0px;
             color:blue;

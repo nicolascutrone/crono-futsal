@@ -34,6 +34,8 @@ setTimeButton.addEventListener('click', () => {
     }
     timeRemaining = gameTimeMinutes * 60 * 1000;
     updateTimeDisplay();
+    const btnestablecer = document.getElementById('setTimeButton');
+   btnestablecer.disabled = true; 
   
 });
 // ////  Reset valores
@@ -50,10 +52,12 @@ resetButton.addEventListener('click', () => {
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
     timeRemaining=0;
     updateTimeDisplay();
+  const btnestablecer = document.getElementById('setTimeButton');
+   btnestablecer.disabled = false; 
 });
 
 startPauseButton.addEventListener('click', () => {
-     document.getElementById('setTimeButton').disable=true;
+     
     if (!timer) {
          
         startTimer();
@@ -115,7 +119,6 @@ document.querySelector('#team2 .goalButton').addEventListener('click', () => {
     team2Goals++;
     team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
 });
-
 
 
 document.querySelector('#team2 .foulButton').addEventListener('click', () => {
