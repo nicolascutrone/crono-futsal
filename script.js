@@ -57,14 +57,14 @@ resetButton.addEventListener('click', () => {
 });
 
 startPauseButton.addEventListener('click', () => {
-     
-    if (!timer) {
-         
-        startTimer();
-    } else {
-        pauseTimer();
-    }
- 
+     if (timeRemaining > 0) {
+        if (!timer) {
+
+            startTimer();
+        } else {
+            pauseTimer();
+        }
+     }
 });
 
 Bocina.addEventListener('click', () => {
@@ -201,19 +201,25 @@ function updateTimeDisplay() {
         let intervalo;
 
  function mostrarPopup() {
-            document.getElementById('popup').style.display = 'block';
-            tiempoRestante = 60; // Reiniciar tiempo
-            document.getElementById('time').innerText = '01:00'; // Reiniciar display
-            document.getElementById('circle').style.background = 'conic-gradient(#FFA500 0% 0%, #fff 0% 100%)'; // Reiniciar relleno
-            clearInterval(intervalo);
-            intervalo = setInterval(actualizarReloj, 1000);
-            document.getElementById('mostrarPopupBtn').disabled = true; // Deshabilitar botón
+             if (timeRemaining > 0)  {
+                  pauseTimer() ;
+                   reproducirAudio("HornBasket");
+                  document.getElementById('popup').style.display = 'block';
+                  tiempoRestante = 60; // Reiniciar tiempo
+                  document.getElementById('time').innerText = '01:00'; // Reiniciar display
+                  document.getElementById('circle').style.background = 'conic-gradient(#FFA500 0% 0%, #fff 0% 100%)'; // Reiniciar relleno
+                  clearInterval(intervalo);
+                  intervalo = setInterval(actualizarReloj, 1000);
+                  document.getElementById('mostrarPopupBtn').disabled = true; 
+               // Deshabilitar botón
+             }
         }
 
         function cerrarPopup() {
             document.getElementById('popup').style.display = 'none';
             clearInterval(intervalo);
             document.getElementById('mostrarPopupBtn').disabled = false; // Habilitar botón
+           reproducirAudio("HornBasket");
         }
 
         function actualizarReloj() {
@@ -247,3 +253,18 @@ function updateTimeDisplay() {
 
         setInterval(actualizarFechaHora, 1000);
  actualizarFechaHora(); // Actualizar inmediatamente al cargar la página
+
+
+// popup opcion 3 menu principal
+
+// Mostrar el popup para la opción 3
+    document.getElementById('openPopup2').onclick = function() {
+      document.getElementById('popup2').style.display = 'block';
+      document.getElementById('popup-background').style.display = 'block';
+    }
+
+    // Cerrar el popup para la opción 2
+    function cerrarPopup2() {
+      document.getElementById('popup2').style.display = 'none';
+      document.getElementById('popup-background').style.display = 'none';
+    }

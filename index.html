@@ -19,6 +19,14 @@
 <body>
   
     <div class="scoreboard">
+        <div class="menu">
+          <button1 class="menu-button">☰ Menu</button1>
+          <div class="menu-content">
+            <a href="https://scpaginas.github.io/crono-futsal/guiacrono.PNG" target="_blank">Manual Instrucciones</a>
+            <a href="#opcion2">Configuracion</a>
+            <a href="#" id="openPopup2">Acerca de</a>
+          </div>
+        </div>
         <div id="datetime"></div>
         <div class="time-controls">
           <div id="Display">CRONO-CONSOLA</div>
@@ -77,6 +85,17 @@
                     <div class="time" id="time">01:00</div>
                 </div>
                 <buttonX onclick="cerrarPopup()">Cerrar</buttonX>
+            </div>
+            <!-- Fondo oscuro para el popup -->
+            <div id="popup-background"></div>
+
+            <!-- Popup para la opción 2 -->
+            <div id="popup2">
+              <p>Crono-Consola (2024). Concepto, diseño y programación 
+                por Nicolas  Cutrone, arbitro de la RFGF
+                con la ayuda de la Inteligencia Artificial.
+                </p>
+              <button onclick="cerrarPopup2()">Cerrar</button>
             </div>
     </div>
     <script src="script.js"></script>
