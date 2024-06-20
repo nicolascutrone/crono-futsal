@@ -92,43 +92,57 @@ function actualizarBotones() {
 document.querySelector('#team1 .goalButtonAdd').addEventListener('click', () => {
     team1Goalsadd++;
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
+    reproducirAudio("audioGOL");
 });
 document.querySelector('#team1 .goalButtonRest').addEventListener('click', () => {
+  
   if (team1Goalsadd>0) {
     team1Goalsadd--;
   }
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
+    reproducirAudio("audioGOL");
 });
 
 document.querySelector('#team2 .goalButtonRest2').addEventListener('click', () => {
-     if (team2Goals>0) { team2Goals--};
+  
+  if (team2Goals>0) { team2Goals--};
     team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
+    reproducirAudio("audioGOL");   
 });
 
 document.querySelector('#team1 .foulButton').addEventListener('click', () => {
     team1Fouls++;
+    
     team1FoulsLabel.textContent = `Faltas: ${team1Fouls}`;
+    reproducirAudio("audioFaul");
 });
 
 document.querySelector('#team1 .foulButtonMinos').addEventListener('click', () => {
-     if (team1Fouls>0) team1Fouls--;
+    
+  if (team1Fouls>0) team1Fouls--;
     team1FoulsLabel.textContent = `Faltas: ${team1Fouls}`;
+    reproducirAudio("audioFaul"); 
 });
 
 document.querySelector('#team2 .goalButton').addEventListener('click', () => {
     team2Goals++;
     team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
+    reproducirAudio("audioGOL");
 });
 
 
 document.querySelector('#team2 .foulButton').addEventListener('click', () => {
+    
     team2Fouls++;
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
+    reproducirAudio("audioFaul");   
 });
 
 document.querySelector('#team2 .foulButtonMenos').addEventListener('click', () => {
-    if (team2Fouls>0) team2Fouls--;
+  
+  if (team2Fouls>0) team2Fouls--;
     team2FoulsLabel.textContent = `Faltas: ${team2Fouls}`;
+    reproducirAudio("audioFaul");     
 });
 function startTimer() {
    reproducirAudio("audioPlayer");
