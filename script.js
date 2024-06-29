@@ -69,7 +69,7 @@ startPauseButton.addEventListener('click', () => {
 
 Bocina.addEventListener('click', () => {
    // beep();
-  reproducirAudio("HornBasket");
+  reproducirAudio("HornBasket", true);
 });
 
 //**
@@ -93,6 +93,7 @@ document.querySelector('#team1 .goalButtonAdd').addEventListener('click', () => 
     team1Goalsadd++;
     team1GoalsLabel.textContent = `GOLES: ${team1Goalsadd}`;
     reproducirAudio("audioGOL");
+    addGoal('team1');
 });
 document.querySelector('#team1 .goalButtonRest').addEventListener('click', () => {
   
@@ -128,6 +129,7 @@ document.querySelector('#team2 .goalButton').addEventListener('click', () => {
     team2Goals++;
     team2GoalsLabel.textContent = `GOLES: ${team2Goals}`;
     reproducirAudio("audioGOL");
+   addGoal('team2');
 });
 
 
@@ -154,14 +156,14 @@ function startTimer() {
             clearInterval(timer);
             timer = null;
            
-          reproducirAudio("HornBasket");  
+          reproducirAudio("HornBasket",true);  
           console.log('Esperando 3 segundos...');
           setTimeout(() => {
             console.log('¡3 segundos han pasado!');
           }, 3000);
            
           alert("Tiempo finalizado!");
-          reproducirAudio("HornBasket");  
+          reproducirAudio("HornBasket",true);  
         }
     }, 10);
 }
@@ -174,12 +176,15 @@ function pauseTimer() {
 
 // Sonidos
 
-function reproducirAudio(audioId) {
+function reproducirAudio(audioId, forcePlay = false) {
+    var soundToggle = localStorage.getItem('soundToggle') === 'true';
     var audioPlayer = document.getElementById(audioId);
-    if (audioPlayer) {
-        audioPlayer.play();
-    } else {
-        console.error('No se encontró el elemento de audio con ID:', audioId);
+   if (soundToggle || forcePlay) {
+      if (audioPlayer) {
+          audioPlayer.play();
+      } else {
+          console.error('No se encontró el elemento de audio con ID:', audioId);
+      }
     }
 }
 
@@ -217,7 +222,7 @@ function updateTimeDisplay() {
  function mostrarPopup() {
              if (timeRemaining > 0)  {
                   pauseTimer() ;
-                   reproducirAudio("HornBasket");
+                   reproducirAudio("HornBasket",true);
                   document.getElementById('popup').style.display = 'block';
                   tiempoRestante = 60; // Reiniciar tiempo
                   document.getElementById('time').innerText = '01:00'; // Reiniciar display
@@ -233,7 +238,7 @@ function updateTimeDisplay() {
             document.getElementById('popup').style.display = 'none';
             clearInterval(intervalo);
             document.getElementById('mostrarPopupBtn').disabled = false; // Habilitar botón
-           reproducirAudio("HornBasket");
+           reproducirAudio("HornBasket",true);
         }
 
         function actualizarReloj() {
@@ -272,7 +277,7 @@ function updateTimeDisplay() {
 // popup opcion 3 menu principal
 
 // Mostrar el popup para la opción 3
-    document.getElementById('openPopup2').onclick = function() {
+      document.getElementById('openPopup2').onclick = function() {
       document.getElementById('popup2').style.display = 'block';
       document.getElementById('popup-background').style.display = 'block';
     }
@@ -282,3 +287,134 @@ function updateTimeDisplay() {
       document.getElementById('popup2').style.display = 'none';
       document.getElementById('popup-background').style.display = 'none';
     }
+//*****  Efecto especial
+
+ function addGoal(team) {
+    var teamElement = document.getElementById(team);
+    var goalElement = teamElement.querySelector('.goals');
+    var currentGoals = parseInt(goalElement.textContent.replace('GOLES: ', ''));
+    goalElement.textContent = 'GOLES: ' + (currentGoals + 1);
+
+    // Aplicar la animación
+    goalElement.classList.add('goal-change');
+
+    // Remover la animación después de que termine
+    setTimeout(function() {
+      goalElement.classList.remove('goal-change');
+    }, 500); // 500 ms es la duración de la animación
+  }
+
+
+ // Aplicar configuraciones guardadas al cargar la página
+  window.onload = function() {
+    var soundToggle = localStorage.getItem('soundToggle') === 'true';
+    // Aplicar el estado del sonido
+    document.getElementById('soundToggle').checked = soundToggle;
+  }
+
+function guardarConfiguracion() {
+    var soundToggle = document.getElementById('soundToggle').checked;
+    localStorage.setItem('soundToggle', soundToggle);
+    cerrarPopup();
+  }
+//Modal 
+///*****************************
+ // Obtener el modal
+  var modal = document.getElementById("faltaModal");
+
+  // Obtener el botón que abre el modal
+  var faltaButtons = document.querySelectorAll(".foulButton");
+
+
+ 
+  // Obtener el elemento <span> que cierra el modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // Obtener los botones de las tarjetas
+  var amarillaBtn = document.getElementById("amarillaBtn");
+  var rojaBtn = document.getElementById("rojaBtn");
+
+  // Contenedores de tarjetas
+  var localTarjetas = document.getElementById("localTarjetas");
+  var visitanteTarjetas = document.getElementById("visitanteTarjetas");
+
+  // Variable para saber en qué equipo se está añadiendo la falta
+  var currentTeam;
+  var selectedTarjeta;
+
+  // Modal de confirmación de eliminación
+  var confirmModal = document.getElementById("confirmModal");
+  var closeConfirm = document.getElementsByClassName("closeConfirm")[0];
+  var confirmYes = document.getElementById("confirmYes");
+  var confirmNo = document.getElementById("confirmNo");
+
+  // Cuando el usuario hace clic en un botón +Falta, abre el modal y establece el equipo actual
+  faltaButtons.forEach(function(button) {
+    button.onclick = function() {
+      modal.style.display = "block";
+      currentTeam = button.getAttribute("data-team");
+    };
+  });
+
+  // Cuando el usuario hace clic en <span> (x), cierra el modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // Función para añadir tarjeta
+  function addTarjeta(color) {
+      var tarjeta = document.createElement("div");
+      tarjeta.className = "tarjeta " + color;
+      tarjeta.onclick = function() {
+          selectedTarjeta = tarjeta;
+          confirmModal.style.display = "block";
+      };
+      if (currentTeam === "local") {
+          localTarjetas.appendChild(tarjeta);
+      } else if (currentTeam === "visitante") {
+          visitanteTarjetas.appendChild(tarjeta);
+      }
+  }
+
+  // Cuando el usuario hace clic en una tarjeta, realiza la acción correspondiente y cierra el modal
+  amarillaBtn.onclick = function() {
+    addTarjeta("amarilla");
+    modal.style.display = "none";
+  };
+
+  rojaBtn.onclick = function() {
+    addTarjeta("roja");
+    modal.style.display = "none";
+  };
+
+  // Cuando el usuario hace clic fuera del modal, cierra el modal
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // Cuando el usuario hace clic en una tarjeta, realiza la acción correspondiente y cierra el modal
+  amarillaBtn.onclick = function() {
+      addTarjeta("amarilla");
+      modal.style.display = "none";
+  };
+
+  rojaBtn.onclick = function() {
+      addTarjeta("roja");
+      modal.style.display = "none";
+  };
+ // Cuando el usuario hace clic en "Sí", elimina la tarjeta seleccionada
+  confirmYes.onclick = function() {
+      if (selectedTarjeta) {
+          selectedTarjeta.remove();
+          selectedTarjeta = null;
+      }
+      confirmModal.style.display = "none";
+  };
+
+  // Cuando el usuario hace clic en "No", cierra el modal de confirmación
+  confirmNo.onclick = function() {
+      confirmModal.style.display = "none";
+      selectedTarjeta = null;
+  };

@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - N-Cron</title>
+  <title>CodePen - N-Cron-V2</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -20,7 +20,7 @@
   
     <div class="scoreboard">
        <audio id="audioGOL" src="https://scpaginas.github.io/crono-futsal/beepGol.mp3"></audio>
-       <audio id="audioFaul" src="https://scpaginas.github.io/crono-futsal/beepFaul.mp3"></audio>
+       <audio id="audioFaul" src="https://scpaginas.github.io/crono-futsal/beepFalta2.mp3"></audio>
         <div class="menu">
           <button1 class="menu-button">☰ Menu</button1>
           <div class="menu-content">
@@ -48,7 +48,7 @@
           <audio id="audioPlayer" src="https://scpaginas.github.io/crono-futsal/stop-13692.mp3"></audio>
           <audio id="CarDoorChime" src="https://scpaginas.github.io/crono-futsal/CarDoorChime.wav"></audio>
           
-          <buttonBocina id="Bocina"> <img src="https://scpaginas.github.io/crono-futsal/Corneta2.png" alt="Imagen del Botón" class="button-image"></buttonBocina>
+          <buttonBocina id="Bocina"> <img src="https://scpaginas.github.io/crono-futsal/Corneta2.png" alt="Imagen de Bocina" class="button-image"></buttonBocina>
            <audio id="HornBasket" src="https://scpaginas.github.io/crono-futsal/basket-horn.mp3"></audio>
           
             <div id="timeDisplay">Tiempo: 0:00:00</div>
@@ -58,23 +58,46 @@
                 <h2>LOCAL</h2>
                 <buttonGolplus class="goalButtonAdd" >+ GOL</buttonGolplus>
               <buttonGolMenos class="goalButtonRest">- GOL</buttonGolMenos>
-                <buttonfaul class="foulButton">+ Falta</buttonfaul>
+                <buttonfaul class="foulButton"  data-team="local">+ Falta</buttonfaul>
                 <buttonfaul class="foulButtonMinos">- Falta</buttonfaul>
                 <div class="goals">GOLES: 0</div>
                 <div class="fouls">Faltas: 0</div>
+                <!-- Contenedores de tarjetas debajo de las faltas -->
+                <div id="localTarjetas" class="tarjetas-container"></div>
+            
             </div>
             <div class="team" id="team2">
                 <h2>VISITANTES</h2>
                 <buttonGolplus class="goalButton">+ GOL</buttonGolplus>
               <buttonGolMenos class="goalButtonRest2">- GOL</buttonGolMenos>
-                <buttonfaul class="foulButton">+ Falta</buttonfaul>
+                <buttonfaul class="foulButton"  data-team="visitante" >+ Falta</buttonfaul>
                 <buttonFaul class="foulButtonMenos">- Falta</buttonFaul>
                 <div class="goals">GOLES: 0</div>
                 <div class="fouls">Faltas: 0</div>
-               
+                 <!-- Contenedores de tarjetas debajo de las faltas -->
+                <div id="visitanteTarjetas" class="tarjetas-container"></div>       
             </div>
-                 
-           
+              
+                
+           <!-- Modal Tarjetas-->
+                <div id="faltaModal" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Selecciona el tipo de falta:</p>
+                    <button id="amarillaBtn"> <img src="https://scpaginas.github.io/crono-futsal/imagen/tarjeta-amarilla.png" ></button>
+                    <button id="rojaBtn"><img src="https://scpaginas.github.io/crono-futsal/imagen/tarjeta-roja.png" ></button>
+                  </div>
+                </div>
+          <!-- Modal de confirmación de eliminación -->
+                <div id="confirmModal" class="modal">
+                    <div class="modal-content">
+                        <span class="closeConfirm">&times;</span>
+                        <p>¿Está seguro que desea eliminar esta tarjeta?</p>
+                        <button id="confirmYes">Sí</button>
+                        <button id="confirmNo">No</button>
+                    </div>
+                </div>
+          
         </div>
             <div class= "footer">
                  <button id="reset">Reiniciar Consola</button>
@@ -97,7 +120,15 @@
                 con apoyo de la Inteligencia Artificial.
                 </p>
               <button onclick="cerrarPopup2()">Cerrar</button>
+              <label for="soundToggle">Activar sonido:</label>
+              <label class="switch" title="Activar/Desactivar sonido excepto la bocina">
+                <input type="checkbox" id="soundToggle">
+                <span class="slider"></span>
+              </label>
+              <button onclick="guardarConfiguracion()">Guardar Configuración</button>
             </div>
+      
+      
     </div>
     <script src="script.js"></script>
     
